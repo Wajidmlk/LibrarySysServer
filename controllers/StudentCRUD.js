@@ -31,8 +31,8 @@ export const getStudents = ( req, res, db ) => {
  */
 export const setStudent = ( req, res, db ) => {
   
-  db.select( '*' ).from( DB_SETINGS.COLLECTIONS.STUDENT ).where( "id", req.body.id )
-  .update( req.body.fields ).then( data => {
+  db.select( '*' ).from( DB_SETINGS.COLLECTIONS.STUDENT ).where( "user_id", req.body.user_id )
+  .update( req.body ).then( data => { 
     if( data != null ) res.json( { success : true } );
   } ).catch( err => res.status(400).json( { success : false } ) );
 }

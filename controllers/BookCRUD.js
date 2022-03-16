@@ -30,9 +30,8 @@ export const getBooks = ( req, res, db ) => {
  * 
  */
 export const setBook = ( req, res, db ) => {
-  
-  db.select( '*' ).from( DB_SETINGS.COLLECTIONS.BOOK ).where( "id", req.body.id )
-  .update( req.body.fields ).then( data => {
+  db.select( '*' ).from( DB_SETINGS.COLLECTIONS.BOOK ).where( "user_id", req.body.user_id )
+  .update( req.body ).then( data => {
     if( data != null ) res.json( { success : true } );
   } ).catch( err => res.status(400).json( { success : false } ) );
 }
